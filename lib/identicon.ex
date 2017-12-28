@@ -1,10 +1,10 @@
 defmodule Identicon do
   @moduledoc """
-    Generates Identicons
+    Generates Github style Identicons
   """
 
   @doc """
-    Generates an Identicon image based on the input string
+    Generates an identicon image based on the input string
     given and saves that identicon into a file
   """
   def main(input) do
@@ -19,7 +19,7 @@ defmodule Identicon do
   end
 
   def save_image(image, filename) do
-    File.write("#{filename}.png", image) 
+    File.write("#{filename}.png", image)
   end
 
   def draw_image(%Identicon.Image{color: color, pixel_map: pixel_map}) do
@@ -27,7 +27,6 @@ defmodule Identicon do
     fill = :egd.color(color)
     Enum.each pixel_map, fn({start,stop}) ->
       :egd.filledRectangle(image, start, stop, fill)
-      ### WTF? Is it mutating the image in place...?
     end
     :egd.render(image)
   end
@@ -51,7 +50,7 @@ defmodule Identicon do
   end
 
   @doc """
-    Generate new Identicon with the grid defined
+    Generate grid
   """
   def build_grid(%Identicon.Image{hex: hex_list} = image) do
     grid =
@@ -82,9 +81,8 @@ defmodule Identicon do
       |> Enum.slice(0, length(list) - 1)
       |> Enum.reverse
 
-    list ++ rev # Same as Enum.concat
+    list ++ rev
   end
-
 
   @doc """
     Generate a new Identicon with color defined
@@ -109,6 +107,7 @@ defmodule Identicon do
 
       iex> Identicon.hash_input('Elixir')
       %Identicon.Image{hex: [161, 46, 176, 98, 236, 169, 209, 230, 198, 159, 207, 139, 96, 55, 135, 195]}
+
   """
   def hash_input(input) do
     hex =

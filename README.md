@@ -1,21 +1,13 @@
 # Identicon
 
-**TODO: Add description**
+Generate Github style Identicons (https://en.wikipedia.org/wiki/Identicon) in Elixir
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `identicon` to your list of dependencies in `mix.exs`:
+Fire up the iex `iex -S mix` and
 
 ```elixir
-def deps do
-  [
-    {:identicon, "~> 0.1.0"}
-  ]
-end
+iex> Identicon.main("blah")
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/identicon](https://hexdocs.pm/identicon).
-
+The Identicon for blah is now stored in the project directory as blah.png
